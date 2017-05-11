@@ -14,43 +14,42 @@
 		}
 	</style>
 </head>
-<body>
-	<div class="container-fluid">
+<body ng-app="voTweet">
+	<div class="container-fluid" ng-controller="listUsuariosCtrl">
 		<div class="row">
 			<div class="col-sm-2"></div>
 			<div class="col-sm-8">
 				<table class=" table tabler-hover">
 					<tr>
 						<th>id</th>
-						<th>nombre</th>
-						<th>apeliidos</th>
-						<th>direccion</th>
-						<th>telefono</th>
-						<th>email</th>
-						<th>password</th>
-						<th>partido</th>
+						<th>Candidato id</th>
+						<th>Privilegios</th>
+						<th>Nombre</th>
+						<th>Apellido</th>
+						<th>Email</th>
+						<th>Password</th>
 					</tr>
 					<tr>
-						<form>
-							<td><input type="text"></td>
-							<td><input type="text"></td>
-							<td><input type="text"></td>	
-							<td><input type="text"></td>
-							<td><input type="text"></td>
-							<td><input type="text"></td>
-							<td><input type="text"></td>
-							<td><input type="text"></td>
+						<form ng-submit="add()">
+							<td><input type="text" ng-model="Modelusr_id"></td>
+							<td><input type="text" ng-model="Modelcdto_id"></td>
+							<td><input type="text" ng-model="Modelusr_privilegio"></td>	
+							<td><input type="text" ng-model="Modelusr_nombre"></td>
+							<td><input type="text" ng-model="Modelusr_apellido"></td>
+							<td><input type="text" ng-model="Modelusr_correo"></td>
+							<td><input type="text" ng-model="Modelusr_password"></td>
+							<td><input type="submit" value="nuevo" class="btn btn-primary"/></td>
 						</form>
 					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+					<tr ng-repeat="usuario in usuarios">
+						<td>{{usuario.usr_id}}</td>
+						<td>{{usuario.cdto_id}}</td>
+						<td>{{usuario.usr_privilegio}}</td>
+						<td>{{usuario.usr_nombre}}</td>
+						<td>{{usuario.usr_apellido}}</td>
+						<td>{{usuario.usr_correo}}</td>
+						<td>{{usuario.usr_password}}</td>
+						<td><input ng-click="delete(usuario)" type="text" name="Eliminar" class="btn btn-danger" value="Borrar" ></td>
 					</tr>	
 				</table>
 			</div>
