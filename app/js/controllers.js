@@ -2,10 +2,10 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', [])
-  .controller('MyCtrl1', ['$scope', function($scope) {
+angular.module('voTweet.controllers', []).
 
-  }])
-  .controller('MyCtrl2', ['$scope', function($scope) {
+controller('listUsuariosCtrl',['$scope','listUser',function ($scope,listUser) {
+	$scope.usuarios=listUser.getUsers();
+	// body...
+}])
 
-  }]);
