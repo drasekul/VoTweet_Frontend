@@ -65,7 +65,7 @@ body{
 
 #contenedor a {
 	text-decoration: none;
-	padding: 3px 10px 3px 10px;
+	padding: 3px 8px 3px 8px;
 	text-align: center;
 }
 
@@ -98,6 +98,7 @@ body{
 								<li><a href=""><i class="fa fa-eye" aria-hidden="true"></i>Que es Omnipotweet </a></li>
 								<li><a href=""><i class="fa fa-question" aria-hidden="true"></i>Ayuda</a></li>
 								<li><a href=""><i class="fa fa-book" aria-hidden="true"></i>Referencias </a></li>
+								<li><a href="vistaPrincipal.html"><i class="fa fa-chevron-left" aria-hidden="true"></i>Atras </a>
 								<li><a href=""><i class="fa fa-power-off" aria-hidden="true"></i>Cerrar sesion </a></li>
 							</ul>
 						</div>
@@ -108,28 +109,7 @@ body{
 		</header>
 	</div>
 
-	<div id="contenedor" ng-repeat="candidato in candidatos" align="left" height="450" width="350" >
-		<ul>
-			<font color="white"><h1>{{candidato.cdto_nombre}}</h1></font>
-			<li>
-				<a title="{{candidato.cdto_nombre}}"" href="vistaAprobacion.html">
-				<p>
-					<img src="{{candidato.cdto_imagen}}" alt="Los Tejos"  height="350" width="250"  />
-					<font color="white"><br>			
-						Nombre :{{candidato.cdto_nombre}}<br>
-						Cuenta Oficial:{{candidato.cdto_cuenta_twitter}}<br>
-						Fecha Nacimiento:{{candidato.cdto_fecha_nacimiento}}<br>
-						Edad: {{candidato.cdto_edad}}<br>
-					</font>
-				</p>
-				</a>
 
-
-			</li>
-
-		</ul>
-
-	</div>
 
 	</div>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
