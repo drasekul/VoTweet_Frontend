@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VoTweet</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimun-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/estilos.css">
+</head>
+<body ng-app="candidatos" ng-controller="controlCdtos">
+	<header>
+		<div class="contenedor">
+			<h1><i class="fa fa-eye" aria-hidden="true"></i>VoTweet</h1>
+			<input type="checkbox" id="menu-bar">
+
+			<label for="menu-bar"><i class="fa fa-bars" aria-hidden="true"></i></label>
+			<nav class="menu">
+				<a href=""><i class="fa fa-question" aria-hidden="true"></i>  Quienes somos</a>
+				<a href=""><i class="fa fa-book" aria-hidden="true"></i>  Términos y condiciones</a>
+				<a href=""><i class="fa fa-ambulance" aria-hidden="true"></i>  Ayuda</a>
+				<a href=""><i class="fa fa-power-off" aria-hidden="true"></i>  Cerrar sesión</a>
+			</nav>
+		</div>
+	</header>
+
+	<main>
+		<section id="banner">
+			<img src="../img/banner2.jpg">
+			<div class="contenedor">
+				<h2>Elecciones Presidenciales Chile 2017</h2>
+				<p>¿Quién será el próximo presidente del país?</p>
+				<a href="#">Leer más</a>				
+			</div>	
+		</section>
+		<section id="bienvenidos">
+			<h2>Camino al sillón presidencial</h2>
+			<p>Las elecciones presidenciales son un evento que cada 4 años traen consigo una mayor controversia debido a múltiples acontecimientos que ocurren en el camino por la toma del sillón presidencial. Esto puede deberse a disputas propias de los candidatos, promesas de campañas, o acciones realizadas por los partidos políticos como representantes de los mismos. Debido a estos acontecimientos es que, las manifestaciones por redes sociales se han hecho cada vez más frecuentes, a causa de la diversidad de opinión que se presentan en este tipo de plataformas. Es así como realizar una aproximación del nivel de aprobación que posea un candidato se puede estimular a partir de las colecciones de comentarios realizados dentro de una red social, en esta ocasión se consideró twitter con la cual se obtuvieron los siguientes resultados.</p>
+		</section>
+
+		<section id="candidatos">
+			<h3>Lista de Candidatos</h3>
+			<div class="contenedor" ng-repeat="candidato in candidatos">
+				<div class="info-candidato">
+					<a  href="vistaInicioCandidato.html">
+					<img src="{{candidato.cdto_imagen}}" alt="Los Tejos"  height="350" width="250"  /></a>
+					<h4>{{candidato.cdto_nombre}}</h4>
+					<!--<h4>Nombre :{{candidato.cdto_nombre}}</h4>
+					<h4>Cuenta Oficial:{{candidato.cdto_cuenta_twitter}}</h4>			
+					<h4>Fecha Nacimiento:{{candidato.cdto_fecha_nacimiento}}</h4>			
+					<h4>Edad: {{candidato.cdto_edad}}</h4>-->
+				</div>					
+			</div>
+		</section>
+
+	</main>
+
+	<footer>
+		<div class="contenedor">
+			<p class="copy">OpmnipoTweet &copy; 2017</p>
+			<div class="sociales">
+				<a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+				<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+				<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script type="text/javascript" src="../controladores/vistaPrincipalCtrl.js"></script>
+
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+</body>
+</html>
