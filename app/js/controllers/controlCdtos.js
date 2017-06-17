@@ -1,7 +1,11 @@
-app.controller('controlCdtos',function ($scope,$http) {
+
+app.controller('controlCdtos',function ($scope,$http, servAprobacionN) {
 
   //$scope.candidatos=  ServCandidatos.getCandidatos();
   //console.log(candidatos);
+  $scope.aprobacionN = servAprobacionN.getAprobacion();
+  console.log($scope.aprobacionN);
+
   $scope.candidatos=[];
   $scope.candidatoActivo=[];
   $http({
@@ -37,8 +41,52 @@ app.controller('controlCdtos',function ($scope,$http) {
       $scope.candidatoActivo=idCandidato;
   }
 
+
+
   $scope.delete=function ($index){
   	$scope.candidatos2.splice($scope.candidatos2.indexOf($index),1);
   };
 
+  /*
+  app.factory("LoadChart", function ($http, $q){
+
+    return function(){
+      var deferedobject = $q.defer();
+      $http.post('/loadFunction').success(function(data){
+        deferedobject.resolve({data:data});
+      }).error(function(){
+        deferedobject.resolve({data: false});
+      });
+      return deferedobject.promise;
+    }
+
+  });
+
+  app.directive("chart2", function(LoadChart){
+      return {
+        restrict: 'A',
+        link: function ($scope, $elm, $attr){
+          var data = new google.visualization.DataTable();
+          data.addColumn('string', 'header');
+          data.addColumn('number', 'Count');
+
+          var result= LoadChart();
+          result.then(function(output){
+
+            angular.forEach(output.data, function(value,key){
+              data.addRow([value.name, value.count]);
+            });
+
+            var options = {
+              'title':'Title',
+              'width' : 500,
+              'height': 500
+            }
+            var chart = new google.visualization.PieChart($elm[0]);
+            chart.draw(data, options);
+          });
+        }
+      }
+    });
+  google.load('visualization','1', {packages: ['corechart']});*/
 });

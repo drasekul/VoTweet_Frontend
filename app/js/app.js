@@ -1,5 +1,5 @@
 var app = angular.module('voTweet', [
-    'ngRoute'
+    'ngRoute', 'googlechart'
     ]);
 
 app.config(function($routeProvider){
