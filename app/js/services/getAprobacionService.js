@@ -5,13 +5,13 @@ app.service('servAprobacionN', function($http){
         var _debugAprobacion = [
 		    {
      			"fecha": "17/06",
-     			"aprobacion": 55,
-    			"desaprobacion": 45,
+     			"aprobacion": "55",
+    			"desaprobacion": "45",
     		},
     		{
     			"fecha": "17/06",
-     			"aprobacion": 25,
-    			"desaprobacion": 75,
+     			"aprobacion": "25",
+    			"desaprobacion": "75",
     		}
 		  ];
 

@@ -1,4 +1,5 @@
 
+angular.module("google-chart-sample", ["googlechart", "googlechart-docs"])
 app.controller('controlCdtos',function ($scope,$http, servAprobacionN) {
 
   //$scope.candidatos=  ServCandidatos.getCandidatos();
@@ -47,6 +48,41 @@ app.controller('controlCdtos',function ($scope,$http, servAprobacionN) {
   	$scope.candidatos2.splice($scope.candidatos2.indexOf($index),1);
   };
 
+    $scope.myChartObject = {};
+    
+    $scope.myChartObject.type = "ColumnChart";
+    
+    $scope.onions = [
+        {v: "Onions"},
+        {v: 3},
+    ];
+
+    $scope.myChartObject.data = {"cols": [
+        {id: "t", label: "Topping", type: "string"},
+        {id: "s", label: "Slices", type: "number"}
+    ], "rows": [
+        {c: [
+            {v: "Mushrooms"},
+            {v: 3},
+        ]},
+        {c: $scope.onions},
+        {c: [
+            {v: "Olives"},
+            {v: 31}
+        ]},
+        {c: [
+            {v: "Zucchini"},
+            {v: 1},
+        ]},
+        {c: [
+            {v: "Pepperoni"},
+            {v: 2},
+        ]}
+    ]};
+
+    $scope.myChartObject.options = {
+        'title': 'Aprobacion'
+    };
   /*
   app.factory("LoadChart", function ($http, $q){
 
