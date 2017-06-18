@@ -1,5 +1,5 @@
 var app = angular.module('voTweet', [
-    'ngRoute', 'googlechart'
+    'ngRoute'
     ]);
 
 app.config(function($routeProvider){
@@ -24,3 +24,5 @@ app.config(function($routeProvider){
       controller: 'controlCdtos'
     });
 });
+
+

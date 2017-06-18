@@ -1,12 +1,7 @@
-
-angular.module("google-chart-sample", ["googlechart", "googlechart-docs"])
-app.controller('controlCdtos',function ($scope,$http, servAprobacionN) {
+app.controller('controlCdtos',function ($scope,$http) {
 
   //$scope.candidatos=  ServCandidatos.getCandidatos();
   //console.log(candidatos);
-  $scope.aprobacionN = servAprobacionN.getAprobacion();
-  console.log($scope.aprobacionN);
-
   $scope.candidatos=[];
   $scope.candidatoActivo=[];
   $http({
@@ -42,87 +37,8 @@ app.controller('controlCdtos',function ($scope,$http, servAprobacionN) {
       $scope.candidatoActivo=idCandidato;
   }
 
-
-
   $scope.delete=function ($index){
   	$scope.candidatos2.splice($scope.candidatos2.indexOf($index),1);
   };
 
-    $scope.myChartObject = {};
-    
-    $scope.myChartObject.type = "ColumnChart";
-    
-    $scope.onions = [
-        {v: "Onions"},
-        {v: 3},
-    ];
-
-    $scope.myChartObject.data = {"cols": [
-        {id: "t", label: "Topping", type: "string"},
-        {id: "s", label: "Slices", type: "number"}
-    ], "rows": [
-        {c: [
-            {v: "Mushrooms"},
-            {v: 3},
-        ]},
-        {c: $scope.onions},
-        {c: [
-            {v: "Olives"},
-            {v: 31}
-        ]},
-        {c: [
-            {v: "Zucchini"},
-            {v: 1},
-        ]},
-        {c: [
-            {v: "Pepperoni"},
-            {v: 2},
-        ]}
-    ]};
-
-    $scope.myChartObject.options = {
-        'title': 'Aprobacion'
-    };
-  /*
-  app.factory("LoadChart", function ($http, $q){
-
-    return function(){
-      var deferedobject = $q.defer();
-      $http.post('/loadFunction').success(function(data){
-        deferedobject.resolve({data:data});
-      }).error(function(){
-        deferedobject.resolve({data: false});
-      });
-      return deferedobject.promise;
-    }
-
-  });
-
-  app.directive("chart2", function(LoadChart){
-      return {
-        restrict: 'A',
-        link: function ($scope, $elm, $attr){
-          var data = new google.visualization.DataTable();
-          data.addColumn('string', 'header');
-          data.addColumn('number', 'Count');
-
-          var result= LoadChart();
-          result.then(function(output){
-
-            angular.forEach(output.data, function(value,key){
-              data.addRow([value.name, value.count]);
-            });
-
-            var options = {
-              'title':'Title',
-              'width' : 500,
-              'height': 500
-            }
-            var chart = new google.visualization.PieChart($elm[0]);
-            chart.draw(data, options);
-          });
-        }
-      }
-    });
-  google.load('visualization','1', {packages: ['corechart']});*/
 });
