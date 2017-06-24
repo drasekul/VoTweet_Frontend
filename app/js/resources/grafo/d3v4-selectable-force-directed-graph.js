@@ -1,10 +1,7 @@
 function createV4SelectableForceDirectedGraph(svg, graph) {
-    // if both d3v3 and d3v4 are loaded, we'll assume
-    // that d3v4 is called d3v4, otherwise we'll assume
-    // that d3v4 is the default (d3)
     if (typeof d3v4 == 'undefined')
         d3v4 = d3;
-
+	
     var width = +svg.attr("width"),
         height = +svg.attr("height");
 
@@ -20,12 +17,12 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
 
     var gMain = svg.append('g')
     .classed('g-main', true);
-
+/*
     var rect = gMain.append('rect')
     .attr('width', parentWidth)
     .attr('height', parentHeight)
     .style('fill', 'white')
-
+*/
     var gDraw = gMain.append('g');
 
     var zoom = d3v4.zoom()
@@ -84,30 +81,61 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
                 return d.feel;
         });
 
-    var node = gDraw.append("g")
-        .attr("class", "node")
-        .selectAll("circle")
+    var node = gDraw.selectAll(".node")
         .data(graph.nodes)
         .enter()
-		.append("circle")
-        .attr("r", function(d) {
-			if(d.group != 17)
-				return 16;
-			else
-				return 5;
-		})
-        .attr("fill", function(d) { 
-            if ('color' in d)
-                return d.color;
-            else
-                return color(d.group); 
-        })
+        .append("g")
+        .attr("class", "node")
         .call(d3v4.drag()
         .on("start", dragstarted)
         .on("drag", dragged)
         .on("end", dragended));
+    
+    var circle = node.append("circle")
+                .attr("class", "circulo")
+                .on("mouseover", fade(0.1))
+                .on("mouseout", fade(1))
+                .attr("r", function(d) {
+                    if(d.group != 17)
+                        return 16;
+                    else
+                        return 5;
+                    })
+                    .attr("fill", function(d) { 
+                        if ('color' in d)
+                            return d.color;
+                        else
+                            return color(d.group); 
+                    });
+    
+        var label = node.append("text")
+                      .attr("dy", ".35em")
+                    .style('color', "#333")
+                      .text(function(d) { return d.id; });
+		
+	/* ********************************** */
+	const linkedByIndex = {};
+	graph.links.forEach(d => {
+		linkedByIndex[d.source + "," + d.target] = 1;
+	});
+	function isConnected(a, b) {
+		return linkedByIndex[a.id + "," + b.id] || linkedByIndex[b.id + "," + a.id] || a.id == b.id;
+	}
+	function fade(opacity) {
+		return d => {
+		  node.style('stroke-opacity', function (o) {
+			const thisOpacity = isConnected(d, o) ? 1 : opacity;
+			this.setAttribute('fill-opacity', thisOpacity);
+			return thisOpacity;
+		  });
+		  		  
+		  link.style('stroke-opacity', o => (o.source === d || o.target === d ? 1 : opacity));
+		};
+	}
 
-      
+    /* ********************************** */
+	 
+    /*
     // add titles for mouseover blurbs
     node.append("title")
         .text(function(d) { 
@@ -116,8 +144,17 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
             else
                 return d.id; 
         });
-		
-		
+	*/
+	/*	
+	var text = gDraw.append("g")
+		.attr("class", "labels")
+		.selectAll("text")
+		.data(graph.nodes)
+		.enter().append("text")
+		.attr("dx", 30)
+		.attr("dy", ".35em")
+		.text(function(d) { if(d.group != 17) return d.id });
+	*/
     var simulation = d3v4.forceSimulation()
         .force("link", d3v4.forceLink()
                 .id(function(d) { return d.id; })
@@ -129,7 +166,7 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
                     return dist; 
                 })
               )
-        .force("charge", d3v4.forceManyBody())
+        .force("charge", d3v4.forceManyBody().strength(-80))
         .force("center", d3v4.forceCenter(parentWidth / 2, parentHeight / 2))
         .force("x", d3v4.forceX(parentWidth/2))
         .force("y", d3v4.forceY(parentHeight/2));
@@ -143,14 +180,22 @@ function createV4SelectableForceDirectedGraph(svg, graph) {
 
     function ticked() {
         // update node and line positions at every step of 
-        // the force simulation
+        // the force simulation       
         link.attr("x1", function(d) { return d.source.x; })
             .attr("y1", function(d) { return d.source.y; })
             .attr("x2", function(d) { return d.target.x; })
             .attr("y2", function(d) { return d.target.y; });
 
-        node.attr("cx", function(d) { return d.x; })
+        circle.attr("cx", function(d) { return d.x; })
             .attr("cy", function(d) { return d.y; });
+        
+        label
+            .attr("x", function(d) { return d.x + 50; })
+            .attr("y", function(d) { return d.y + 25; });
+		/*	
+		text.attr("x", function(d) { return d.x; })
+			.attr("y", function(d) { return d.y; });
+		*/
     }
 
     var brushMode = false;

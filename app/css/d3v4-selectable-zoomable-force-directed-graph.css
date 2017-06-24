@@ -1,0 +1,31 @@
+#d3_selectable_force_directed_graph svg {
+    border: 1px dashed #999;
+    text-anchor: end;
+}
+
+#d3_selectable_force_directed_graph .node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+#d3_selectable_force_directed_graph text{
+    font: 12px sans-serif;
+    color: #fff;
+    stroke: none;
+}
+
+.node .selected {
+  stroke: black;
+}
+
+.node text {
+  display: none;
+}
+
+.circulo:hover {
+  stroke: #333;
+}
+
+.node:hover text {
+  display: block;
+}
