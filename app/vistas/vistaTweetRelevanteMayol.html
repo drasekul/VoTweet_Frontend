@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VoTweet</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimun-scale=1">
+	<link rel="stylesheet" href="../../css/fontello.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../../css/estilos.css">
+	
+</head>
+<body ng-app="candidatos" ng-controller="tweetRelevantes7">
+
+	<header>
+		<div class="contenedor">
+		<h1 href="vistaInicio.html"><i class="fa fa-eye" aria-hidden="true"></i>VoTweet</h1>
+			<input type="checkbox" id="menu-bar">
+
+			<label for="menu-bar"><i class="fa fa-bars" aria-hidden="true"></i></label>
+			<nav class="menu">
+                <a href="vistaDetalleAprobacionMayol.html"><i class="fa fa-thumbs-up" aria-hidden="true"></i>Detalle nivel de aprobación</a>
+                <a href="vistaTweetRelevanteMayol.html"><i class="fa fa-twitter" aria-hidden="true"></i>Tweets Relevantes</a>
+                <a href="vistaOpinionInternacionalMayol.html"><i class="fa fa-globe" aria-hidden="true"></i>Opinión Internacional</a>
+                <a href="index7.html"><i class="fa fa-users" aria-hidden="true"></i>Interacción con usuarios</a>
+                <a href="mayolInicio.html"><i class="fa fa-black-tie" aria-hidden="true"></i>Inicio Candidato</a>
+			</nav>
+		</div>
+	</header>
+	<br><br><br>
+		<section>
+				<div style="padding: 30px;  text-align: center;">
+				<h2>Tweets Relevantes</h2>
+				<p>En la siguiente tabla se presenta un resumen de los tweets más relevantes que hablan sobre el candidato en cuestión. Con el fin de poseer otra perspectiva de la opinión a traves de twitter que se posee sobre la persona.
+				
+			
+					Así entonces la tabla posee las columnas autor, que es quien realizó el tweet, la fecha en la que se realizó, el contenido que posee, la región y ciudad en caso de que estos puedan ser determinados y la cantidad de likes y retweets que posee el tweets.
+				</p>
+				</div>
+			</section>
+	<!-- Estilo de la tabla-->
+	<style>
+		table, th , td  {
+  			border: 1px solid grey;
+  			border-collapse: collapse;
+  			padding: 20px;
+
+
+		}
+		table tr:first-child {
+   		background: #428bca;
+   		color: #fff;
+	</style>
+<main>
+
+	<section>
+
+		<table class=" table tabler-hover" align="left" id="table" style="padding: 20px; max-width: 1000px; margin: 10%; width: 100%;">
+			<tr>
+				<th>Autor</th>
+				<th>Fecha</th>
+				<th>Texto</th>
+				<th>Region</th>
+				<th>Ciudad</th>
+				<th>Cantidad de Likes</th>
+				<th>Cantidad de Retweets</th>
+			</tr>
+
+			<tr ng-repeat="tweet in personas">
+				<td >@{{tweet.autor}}</td>
+				<td >{{tweet.fecha}}</td>
+				<td >{{tweet.texto}}</td>
+				<td >{{tweet.region}}</td>
+				<td >{{tweet.ciudad}}</td>
+				<td >{{tweet.cantidadLikes}}</td>
+				<td >{{tweet.cantidadRt}}</td>
+			</tr>	
+		</table>
+	</section>
+
+
+	</main>
+
+	<footer>
+		<div class="contenedor">
+			<p class="copy">OpmnipoTweet &copy; 2017</p>
+			<div class="sociales">
+				<a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+				<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+				<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script type="text/javascript" src="../controladores/vistaPrincipalCtrl.js"></script>
+<script type="text/javascript" src="../controladores/tweetRelevantesCtrl.js"></script>
+
+
+</body>

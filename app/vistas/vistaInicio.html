@@ -7,6 +7,14 @@
 		<link rel="stylesheet" type="text/css" href="../css/estilos.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script type="text/javascript" src="../controladores/vistaPrincipalCtrl.js"></script>
+
 	</head>
 	<body ng-app="candidatos" ng-controller="controlCdtos">
 		<header>
@@ -40,9 +48,9 @@
 				</nav>
 			</div>
 		</header>
-		
+
 		<main>
-			<!-- banner superior --->
+			<!-- banner superior -->
 			<section id="banner">
 				<img src="../img/banner2.jpg">
 					<div class="contenedor">
@@ -64,7 +72,7 @@
 					<div class="info-candidato">
 						<a  href="{{candidato.urlInicio}}"><img src="{{candidato.cdtoImagen}}" alt="Los Tejos"  height="350" width="250"  /></a>
 						<h4>{{candidato.cdtoNombre}}</h4>
-					</div>					
+					</div>
 				</div>
 			</section>
 
@@ -84,6 +92,110 @@
 				</div>
 			</section>
 
+
+		<div>
+			<section>
+				<div style="padding: 10px; float: left; width: 40%; text-align: justify;">
+					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+					<script type="text/javascript" src="../js/resources/pieChart.js"></script>
+					<div id="piechart" style="width: 680px; height: 500px;"></div>
+				</div>
+			</section>
+			<section>
+				<div style="padding: 30px; float: right; width: 45%; text-align: justify;">
+					<h2>Resumen de Aprobación de Elecciones Presidenciales Chile 2017</h2>
+					<br>
+					<p>Mediante la siguiente representación gráfica se busca mostrar un resumen a partir de la actualización
+						de los últimos datos obtenidos por el observatorio de twitter, que representa la aprobación de cada uno de los candidatos que se encuentran presentes en estas elecciones presidenciales en Chile 2017.
+					</p>
+					<br>
+					<p>Estos datos se encuentran sujetos a cambios y son altualizados cada vez que se hace un recopilatorio de ellos. Cabe destacar que estas estadisticas solo representan la opinión de un grupo subjetivo de personas por lo que no representan la opinión establecida a nivel país.
+					</p>
+				</div>
+			</section>
+		</div>
+
+        <br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br>
+ <section>
+
+        <br><br><br><br><br>
+        <br><br><br><br><br>
+        <br><br><br><br><br>
+        <div class="contenedor">
+        <h3 align="center">Interacción con Usuarios</h3>
+        <p align="center">Mediante la siguiente representción de un grafo, se busca conseguir representar el nivel de interacción que poseen los candidatos con los usuarios de Twitter. Esto en base a lo capturado por el colector y que sirve de utilidad para determinar las estadisticas que son generadas por este observatorio</p>
+        <br>
+
+        <div align="center">
+        <h4>Simbología</h4>
+            <table>
+            <tr>
+              <td><div class="circulo" style="background:#E6E6E6;"></div></td>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;Usuarios de Twitter</td>
+
+            </tr>
+
+            <tr>
+              <td><div class="color-chart"></div></td>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;Candidato presidencial</td>
+            </tr>
+
+            <tr>
+              <td><div class="rectangulo" style="background:#FF0000;"></div></td>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;Relación Negativa</td>
+            </tr>
+            <tr>
+              <td><div class="rectangulo" style="background:#848484;"></div></td>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;Relación Neutral</td>
+            </tr>
+            <tr>
+              <td><div class="rectangulo" style="background:#2E9AFE;"></div></td>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;Relación Positiva</td>
+            </tr>
+            </table>
+
+        </div>
+         <br><br>
+            <div align='center' id="d3_selectable_force_directed_graph" style="width: 910px; height: 500px; margin: auto; margin-bottom: 12px">
+                    <svg />
+            </div>
+
+            <link rel='stylesheet' href='../css/d3v4-selectable-zoomable-force-directed-graph.css'>
+            <script src="https://d3js.org/d3.v4.js"></script>
+            <!-- importaciones para grafo -->
+            <script src="../js/resources/grafo/d3v4-brush-lite.js"></script>
+            <script src="../js/resources/grafo/d3v4-selectable-force-directed-graph.js"></script>
+
+            <script>
+                var svg = d3.select('#d3_selectable_force_directed_graph');
+                d3.json('http://localhost:8080/votweet-backend-master/candidatos/interaccionCandidatos', function(error, graph) {
+                if (!error) {
+                    createV4SelectableForceDirectedGraph(svg, graph);
+                } else {
+                    console.error(error);
+                }
+                });
+            </script>
+        </div>
+
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		</main>
 
 		<footer>
@@ -96,11 +208,7 @@
 				</div>
 			</div>
 		</footer>
-		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-		<script type="text/javascript" src="../controladores/vistaPrincipalCtrl.js"></script>
 
 		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 	</body>

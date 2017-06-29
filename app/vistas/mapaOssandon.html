@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="mapApp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Mapa</title>
+<link rel="stylesheet" type="text/css" href="../css/map.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script
+	src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAoxExPjhAKPnvHmLQyY6Sk6Weg9jFkwmc"></script>
+  <script type="text/javascript" src="../controladores/map.js"></script>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="../css/fontello.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/estilos.css">
+	<link rel="stylesheet" href="../css/historico.css">
+	<link rel="stylesheet" type="text/css" href="../css/prueba2.css">
+</head>
+<header>
+		<div class="contenedor">
+		<h1 href="vistaInicio.html"><i class="fa fa-eye" aria-hidden="true"></i>VoTweet</h1>
+
+			<input type="checkbox" id="menu-bar">
+
+			<label for="menu-bar"><i class="fa fa-bars" aria-hidden="true"></i></label>
+			<nav class="menu">
+				<a href="mapaOssandon.html"><i class="fa fa-thumbs-up" aria-hidden="true"></i>Mapa Aprobacion en Ciudades</a>
+				<a href="vistaDetalleAprobacionOssandon.html"><i class="fa fa-thumbs-up" aria-hidden="true"></i>Detalle nivel de aprobación</a>
+				<a href="vistaTweetRelevanteOssandon.html"><i class="fa fa-twitter" aria-hidden="true"></i>Tweets Relevantes</a>
+				<a href="vistaOpinionInternacionalOssandon.html"><i class="fa fa-globe" aria-hidden="true"></i>Opinión Internacional</a>
+				<a href="index2.html"><i class="fa fa-users" aria-hidden="true"></i>Interacción con usuarios</a>
+				<a href="OssandonInicio.html"><i class="fa fa-black-tie" aria-hidden="true"></i>Inicio Candidato</a>
+
+			</nav>
+		</div>
+	</header>
+
+
+<main>
+		<section id="bienvenidos">
+			<br>
+			<h3>Mapa de aprobación de Manuel Ossandón</h3>
+			<div id='dashboard'></div>
+			</section>
+
+			<section>
+			<fn>
+				En el siguiente mapa se puede apreciar la aprobación y desaprobación del candidato Manuel Ossandón. Para esto debe seleccionar un marcador en el mapa, para que aparezca la aprobación del candidato en dicho lugar.
+			</fn>
+		</section>
+
+		<section >
+			<div ng-controller="MapOssandonCtrl" layout-align="center center">
+    		<div id="map" ></div>
+    		</div>
+		</section>
+	</main>
+
+<footer>
+		<div class="contenedor">
+			<p class="copy">OpmnipoTweet &copy; 2017</p>
+			<div class="sociales">
+				<a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+				<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+				<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+
+</html>

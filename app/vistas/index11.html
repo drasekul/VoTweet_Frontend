@@ -86,7 +86,7 @@
 
             <script>
                 var svg = d3.select('#d3_selectable_force_directed_graph');
-                d3.json('../js/resources/grafo/datos.json', function(error, graph) {
+                d3.json('http://localhost:8080/votweet-backend-master/candidatos/11/interaccionCandidato', function(error, graph) {
                 if (!error) {
                     createV4SelectableForceDirectedGraph(svg, graph);
                 } else {
